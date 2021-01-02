@@ -43,3 +43,9 @@ MMRMMRMRRM
 1 3 N
 
 5 1 E
+
+# Solution:
+
+###Plateau:
+
+<img src="/docs/plateau.png" alt="plateau mars-rover project"/>
