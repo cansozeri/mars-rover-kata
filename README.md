@@ -46,6 +46,6 @@ MMRMMRMRRM
 
 # Solution:
 
-###Plateau:
+##Plateau:
 
 <img src="/docs/plateau.png" alt="plateau mars-rover project"/>
