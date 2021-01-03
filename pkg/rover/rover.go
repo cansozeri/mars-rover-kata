@@ -50,12 +50,19 @@ func NewRover() *Rover {
 	return r
 }
 
-func (r *Rover) SetInitialPosition(p *position.Plateau, x, y int, orientation state.State) {
+func (r *Rover) SetInitialPosition(p *position.Plateau, x, y int, orientation state.State) error {
+
+	if x > p.UpperBoundCoordinateX || y > p.UpperBoundCoordinateY {
+		return fmt.Errorf("coordinate limit of x (%v) - y (%v) has been exceeded in either or both of the supplied inputs", p.UpperBoundCoordinateX, p.UpperBoundCoordinateY)
+	}
+
 	r.plateau = p
 	r.Coordinates.X = x
 	r.Coordinates.Y = y
 	r.currentState = orientation
 	r.Status = Active
+
+	return nil
 }
 
 func (r *Rover) MoveForward() (s state.State) {
@@ -103,7 +110,7 @@ func (r *Rover) TurnRight() (s state.State) {
 	return r.currentState
 }
 
-func (r *Rover) Process(commands ...string) bool {
+func (r *Rover) Process(commands ...string) error {
 
 	if r.Status == Disabled {
 		log.Fatalf("Please set the rover initial place on the plateau")
@@ -117,12 +124,11 @@ func (r *Rover) Process(commands ...string) bool {
 		case "M":
 			r.MoveForward()
 		default:
-			fmt.Println(fmt.Sprintf("Unknown command: %q, ignoring it.", command))
-			return false
+			return fmt.Errorf("unknown command: %q, ignoring it", command)
 		}
 	}
 
-	return true
+	return nil
 }
 
 func (r *Rover) SetState(s state.State) {

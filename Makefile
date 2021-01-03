@@ -10,4 +10,4 @@ test:
 
 # run
 run:
-	go run cmd/mars-rover-kata/main.go
+	go run cmd/mars-rover-kata/main.go -fPath="cmd/mars-rover-kata/instructions.txt"
