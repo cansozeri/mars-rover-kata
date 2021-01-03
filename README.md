@@ -58,3 +58,15 @@ The state pattern is a behavioral software design pattern. The state pattern all
 The state pattern is an alternative to putting lots of conditionals in your context by encapsulating the behaviours within state objects, you can simply change the state object in context to change its behaviour.
 
 There is a need for different functionality on the behaviours of the Rover dependent on which Direction (State) it is in, so state design pattern can represent the different Directions a Rover can have as States.
+
+# Building the code
+
+make build
+
+# Running the code
+
+make run
+
+# Testing the code
+
+make test
