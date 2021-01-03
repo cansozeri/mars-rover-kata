@@ -33,7 +33,7 @@ type Instructions struct {
 	rover   *rover.Rover
 }
 
-func (i *Instructions) LoadAndExecuteMessage() {
+func (i *Instructions) LoadAndExecuteInstructions() {
 	filePtr := flag.String("fPath", "instructions.txt", "service path to read from")
 	flag.Parse()
 	file, err := os.Open(*filePtr)

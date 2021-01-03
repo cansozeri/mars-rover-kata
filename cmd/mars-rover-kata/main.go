@@ -6,5 +6,5 @@ import (
 
 func main() {
 	i := &service.Instructions{}
-	i.LoadAndExecuteMessage()
+	i.LoadAndExecuteInstructions()
 }
