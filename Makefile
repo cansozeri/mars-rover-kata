@@ -1,8 +1,8 @@
-.PHONY:  lint
+.PHONY:
 
 # build
 build:
-	go build ./...
+	go build -o build/main cmd/mars-rover-kata/main.go
 
 # test
 test:
