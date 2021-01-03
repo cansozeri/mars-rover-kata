@@ -1,4 +1,7 @@
 # mars-rover-kata
+<p>
+<a href="https://github.com/cansozeri/mars-rover-kata/actions"><img src="https://github.com/cansozeri/mars-rover-kata/workflows/tests/badge.svg" alt="Build Status"></a>
+</p>
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 
