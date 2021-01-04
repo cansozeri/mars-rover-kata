@@ -14,11 +14,11 @@ func (s *South) MoveForward() (st state.State, e error) {
 	return s, nil
 }
 
-func (s *South) TurnLeft() (st state.State, e error) {
+func (s *South) TurnLeft90Degrees() (st state.State, e error) {
 	return &East{}, nil
 }
 
-func (s *South) TurnRight() (st state.State, e error) {
+func (s *South) TurnRight90Degrees() (st state.State, e error) {
 	return &West{}, nil
 }
 

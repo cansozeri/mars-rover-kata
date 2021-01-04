@@ -11,7 +11,7 @@ func TestWest_TurnLeft(t *testing.T) {
 	t.Parallel()
 
 	d := direction.West{}
-	newDirection, e := d.TurnLeft()
+	newDirection, e := d.TurnLeft90Degrees()
 
 	assert.Equal(t, nil, e)
 	assert.Equal(t, &direction.South{}, newDirection)
@@ -21,7 +21,7 @@ func TestWest_TurnRight(t *testing.T) {
 	t.Parallel()
 
 	d := direction.West{}
-	newDirection, e := d.TurnRight()
+	newDirection, e := d.TurnRight90Degrees()
 
 	assert.Equal(t, nil, e)
 	assert.Equal(t, &direction.North{}, newDirection)

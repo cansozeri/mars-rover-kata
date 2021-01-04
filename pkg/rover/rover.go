@@ -82,11 +82,11 @@ func (r *Rover) MoveForward() (s state.State) {
 	return r.currentState
 }
 
-func (r *Rover) TurnLeft() (s state.State) {
+func (r *Rover) TurnLeft90Degrees() (s state.State) {
 
 	r.currentState.SetPosition(r.Coordinates)
 
-	s, e := r.currentState.TurnLeft()
+	s, e := r.currentState.TurnLeft90Degrees()
 
 	if e != nil {
 		log.Fatalf(e.Error())
@@ -96,11 +96,11 @@ func (r *Rover) TurnLeft() (s state.State) {
 	return r.currentState
 }
 
-func (r *Rover) TurnRight() (s state.State) {
+func (r *Rover) TurnRight90Degrees() (s state.State) {
 
 	r.currentState.SetPosition(r.Coordinates)
 
-	s, e := r.currentState.TurnRight()
+	s, e := r.currentState.TurnRight90Degrees()
 
 	if e != nil {
 		log.Fatalf(e.Error())
@@ -118,9 +118,9 @@ func (r *Rover) Process(commands ...string) error {
 	for _, command := range commands {
 		switch command {
 		case "L":
-			r.TurnLeft()
+			r.TurnLeft90Degrees()
 		case "R":
-			r.TurnRight()
+			r.TurnRight90Degrees()
 		case "M":
 			r.MoveForward()
 		default:
