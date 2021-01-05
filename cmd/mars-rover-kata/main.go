@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	i := &service.Instructions{}
+	i := &service.Manager{}
 	i.LoadAndExecuteInstructions()
 }

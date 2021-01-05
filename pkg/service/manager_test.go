@@ -10,7 +10,7 @@ import (
 func TestInstructions_GetInstructions_Empty_Message(t *testing.T) {
 	t.Parallel()
 
-	i := &service.Instructions{}
+	i := &service.Manager{}
 	e := i.GetInstructions("")
 
 	assert.Nil(t, e)
@@ -19,7 +19,7 @@ func TestInstructions_GetInstructions_Empty_Message(t *testing.T) {
 func TestInstructions_GetInstructions_Plateau(t *testing.T) {
 	t.Parallel()
 
-	i := &service.Instructions{}
+	i := &service.Manager{}
 	e := i.GetInstructions("5 5")
 
 	assert.Nil(t, e)
@@ -30,7 +30,7 @@ func TestInstructions_GetInstructions_Plateau(t *testing.T) {
 func TestInstructions_GetInstructions_Rover_Coordinates(t *testing.T) {
 	t.Parallel()
 
-	i := &service.Instructions{}
+	i := &service.Manager{}
 	e := i.GetInstructions("5 5")
 	assert.Nil(t, e)
 	e = i.GetInstructions("1 2 N")
@@ -44,7 +44,7 @@ func TestInstructions_GetInstructions_Rover_Coordinates(t *testing.T) {
 func TestInstructions_GetInstructions(t *testing.T) {
 	t.Parallel()
 
-	i := &service.Instructions{}
+	i := &service.Manager{}
 
 	e := i.GetInstructions("5 5")
 	assert.Nil(t, e)
@@ -64,7 +64,7 @@ func TestInstructions_GetInstructions(t *testing.T) {
 func TestInstructions_GetInstructions_Invalid_Instruction(t *testing.T) {
 	t.Parallel()
 
-	i := &service.Instructions{}
+	i := &service.Manager{}
 	r := rover.NewRover()
 	r.Status = rover.Active
 	i.SetRover(r)

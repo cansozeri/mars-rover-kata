@@ -28,12 +28,12 @@ const (
 	failedToParseCoordinates = "failed to parse coordinates, due to %v"
 )
 
-type Instructions struct {
+type Manager struct {
 	plateau *position.Plateau
 	rover   *rover.Rover
 }
 
-func (i *Instructions) LoadAndExecuteInstructions() {
+func (i *Manager) LoadAndExecuteInstructions() {
 	filePtr := flag.String("fPath", "instructions.txt", "service path to read from")
 	flag.Parse()
 	file, err := os.Open(*filePtr)
@@ -57,7 +57,7 @@ func (i *Instructions) LoadAndExecuteInstructions() {
 	}
 }
 
-func (i *Instructions) GetInstructions(text string) error {
+func (i *Manager) GetInstructions(text string) error {
 	message := strings.Split(strings.Replace(text, " ", "", -1), "")
 	if len(message) == 0 {
 		return nil
@@ -103,19 +103,19 @@ func (i *Instructions) GetInstructions(text string) error {
 	return nil
 }
 
-func (i *Instructions) SetPlateau(p *position.Plateau) {
+func (i *Manager) SetPlateau(p *position.Plateau) {
 	i.plateau = p
 }
 
-func (i *Instructions) GetPlateau() *position.Plateau {
+func (i *Manager) GetPlateau() *position.Plateau {
 	return i.plateau
 }
 
-func (i *Instructions) SetRover(r *rover.Rover) {
+func (i *Manager) SetRover(r *rover.Rover) {
 	i.rover = r
 }
 
-func (i *Instructions) GetRover() *rover.Rover {
+func (i *Manager) GetRover() *rover.Rover {
 	return i.rover
 }
 
