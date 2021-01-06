@@ -33,7 +33,7 @@ type Manager struct {
 	rover   *rover.Rover
 }
 
-func (i *Manager) LoadAndExecuteInstructions() {
+func (m *Manager) LoadAndExecuteInstructions() {
 	filePtr := flag.String("fPath", "instructions.txt", "service path to read from")
 	flag.Parse()
 	file, err := os.Open(*filePtr)
@@ -46,7 +46,7 @@ func (i *Manager) LoadAndExecuteInstructions() {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		if err := i.GetInstructions(scanner.Text()); err != nil {
+		if err := m.GetInstructions(scanner.Text()); err != nil {
 			fmt.Println(err)
 			return
 		}
@@ -57,7 +57,7 @@ func (i *Manager) LoadAndExecuteInstructions() {
 	}
 }
 
-func (i *Manager) GetInstructions(text string) error {
+func (m *Manager) GetInstructions(text string) error {
 	message := strings.Split(strings.Replace(text, " ", "", -1), "")
 	if len(message) == 0 {
 		return nil
@@ -71,7 +71,7 @@ func (i *Manager) GetInstructions(text string) error {
 		}
 
 		plateau := position.NewPlateau(horizontalAxis, verticalAxis)
-		i.plateau = plateau
+		m.plateau = plateau
 
 	case len(message) == InitRoverPosition:
 		horizontalAxis, verticalAxis, err := getXAndYAxisFromText(message[0], message[1])
@@ -85,38 +85,38 @@ func (i *Manager) GetInstructions(text string) error {
 			return fmt.Errorf("unknown direction: %q", message[2])
 		}
 
-		i.rover = rover.NewRover()
-		err = i.rover.SetInitialPosition(i.plateau, horizontalAxis, verticalAxis, orientation)
+		m.rover = rover.NewRover()
+		err = m.rover.SetInitialPosition(m.plateau, horizontalAxis, verticalAxis, orientation)
 
 		if err != nil {
 			return err
 		}
 
 	default:
-		err := i.rover.Process(message...)
+		err := m.rover.Process(message...)
 		if err != nil {
 			return err
 		}
-		fmt.Println(i.rover.DisplayRobotStats())
+		fmt.Println(m.rover.DisplayRobotStats())
 	}
 
 	return nil
 }
 
-func (i *Manager) SetPlateau(p *position.Plateau) {
-	i.plateau = p
+func (m *Manager) SetPlateau(p *position.Plateau) {
+	m.plateau = p
 }
 
-func (i *Manager) GetPlateau() *position.Plateau {
-	return i.plateau
+func (m *Manager) GetPlateau() *position.Plateau {
+	return m.plateau
 }
 
-func (i *Manager) SetRover(r *rover.Rover) {
-	i.rover = r
+func (m *Manager) SetRover(r *rover.Rover) {
+	m.rover = r
 }
 
-func (i *Manager) GetRover() *rover.Rover {
-	return i.rover
+func (m *Manager) GetRover() *rover.Rover {
+	return m.rover
 }
 
 func getXAndYAxisFromText(horizontal, vertical string) (int, int, error) {
